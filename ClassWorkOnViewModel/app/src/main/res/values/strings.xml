@@ -2,4 +2,5 @@
     <string name="app_name">ClassWorkOnViewModel</string>
     <string name="view_model_count">View Model Count</string>
     <string name="mvc_count">MVC Count</string>
+    <string name="plus_1">Plus +1</string>
 </resources>

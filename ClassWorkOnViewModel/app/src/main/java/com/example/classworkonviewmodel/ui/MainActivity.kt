@@ -13,11 +13,15 @@ class MainActivity : AppCompatActivity() {
     lateinit var addButton: Button
     lateinit var mvcBtButton:Button
     lateinit var tvCount:TextView
+    lateinit var tvAdd:TextView
+    lateinit var btAdd:Button
     lateinit var viewModelInatsnce:MainActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViews() //initialise views
+
+
 
         //viewModel
         viewModelInatsnce = ViewModelProvider(this).get(MainActivityViewModel::class.java)
@@ -25,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         viewModelInatsnce.data.observe(this, {
             showCount.text = it.toString()
         })
+
 
         addButton.setOnClickListener {
 
@@ -37,6 +42,13 @@ class MainActivity : AppCompatActivity() {
             mvcCount()
         }
 
+        //add
+        tvAdd.text = viewModelInatsnce.count.toString()
+        btAdd.setOnClickListener {
+            viewModelInatsnce.addOne()
+            tvAdd.text = viewModelInatsnce.count.toString()
+        }
+
     }
 
     private fun initViews() {
@@ -44,6 +56,8 @@ class MainActivity : AppCompatActivity() {
         addButton = findViewById(R.id.tvButton)
         mvcBtButton = findViewById(R.id.btCount)
         tvCount = findViewById(R.id.tvCount)
+        tvAdd = findViewById(R.id.tvAdd)
+        btAdd = findViewById(R.id.btAdd)
     }
 
     private fun mvcCount() {

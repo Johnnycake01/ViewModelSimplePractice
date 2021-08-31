@@ -14,6 +14,16 @@ class MainActivityViewModel : ViewModel(){
     //live data to store and update count
    private var _data:MutableLiveData<Int> = MutableLiveData()
     val data:LiveData<Int> = _data
+
+    private var _add:MutableLiveData<Int> = MutableLiveData()
+    val add:LiveData<Int> = _add
+    var count = 0
+
+    //func to add 1
+    fun addOne(){
+       count++
+    }
+
 //func to count
     fun counting(){
         viewModelScope.launch(Dispatchers.IO){
